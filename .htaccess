@@ -1,0 +1,13 @@
+### KONFIGURASI YANG SAMA PADA WORDPRESS.
+### UNTUK MENGHILANGKAN INDEX.PHP
+RewriteEngine On
+
+### SILAHKAN EDIT BARIS BERIKUT SESUAIKAN NAMA ROOT FOLDER
+RewriteBase /
+#            <----- root folder ------->
+
+## BARIS BERIKUT JANGAN DI UBAH2
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
