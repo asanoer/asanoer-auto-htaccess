@@ -5,6 +5,6 @@ htaccess saat berubahnya juga folder / URL aplikasi dengan pretty URL.
 
 
 2020.02.16:
---> Artikel ada di https://asanoer.coma
+--> Artikel ada di https://asanoer.com
 --> Membuat skrip index.php
 --> Menambahkan skrip baru instalasi-htaccess.php
