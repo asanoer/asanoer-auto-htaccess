@@ -20,22 +20,21 @@ if($langkah == 3 ){
     $path = $_SERVER['PHP_SELF'];
     $filename = basename($path);
     $direktori = str_replace($filename,"",$path);
+	$isihtacessseharusnya = "### KONFIGURASI YANG SAMA PADA WORDPRESS.\n### UNTUK MENGHILANGKAN INDEX.PHP\nRewriteEngine On\n\n### SILAHKAN EDIT BARIS BERIKUT SESUAIKAN NAMA ROOT FOLDER\nRewriteBase $direktori\n#            <----- root folder ------->\n\n## BARIS BERIKUT JANGAN DI UBAH2\nRewriteRule ^index\.php$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule . index.php [L]";
     if(file_exists(".htaccess")){
         $myfile = fopen(".htaccess", "r") or die("Mati 1 !");
         $data = fread($myfile,filesize(".htaccess"));
         fclose($myfile);
-        if(!strpos($data, $direktori)) {
+        if($data != $isihtacessseharusnya) {
             $myfile = fopen(".htaccess", "w") or die("Mati 2 !");
-            $txt = "### KONFIGURASI YANG SAMA PADA WORDPRESS.\n### UNTUK MENGHILANGKAN INDEX.PHP\nRewriteEngine On\n\n### SILAHKAN EDIT BARIS BERIKUT SESUAIKAN NAMA ROOT FOLDER\nRewriteBase $direktori\n#            <----- root folder ------->\n\n## BARIS BERIKUT JANGAN DI UBAH2\nRewriteRule ^index\.php$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule . index.php [L]";
-            fwrite($myfile, $txt);
+            fwrite($myfile, $isihtacessseharusnya);
             fclose($myfile);
             sleep(5);
             echo "<strong>----Selesai----</strong><br/><br/><br/><a href='index.php'>Kembali</a>";
         }
     } else {
         $myfile = fopen(".htaccess", "w") or die("Mati 2 !");
-            $txt = "### KONFIGURASI YANG SAMA PADA WORDPRESS.\n### UNTUK MENGHILANGKAN INDEX.PHP\nRewriteEngine On\n\n### SILAHKAN EDIT BARIS BERIKUT SESUAIKAN NAMA ROOT FOLDER\nRewriteBase $direktori\n#            <----- root folder ------->\n\n## BARIS BERIKUT JANGAN DI UBAH2\nRewriteRule ^index\.php$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule . index.php [L]";
-            fwrite($myfile, $txt);
+            fwrite($myfile, $isihtacessseharusnya);
             fclose($myfile);
             sleep(5);
             echo "<strong>----Selesai----</strong><br/><br/><br/><a href='index.php'>Kembali</a>";
